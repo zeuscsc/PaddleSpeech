@@ -118,10 +118,13 @@ python3 ${BIN_DIR}/../synthesize_e2e.py \
   --voc_ckpt=pwg_aishell3_ckpt_0.5/snapshot_iter_1000000.pdz \
   --voc_stat=pwg_aishell3_ckpt_0.5/feats_stats.npy \
   --lang=canton \
-  --text=${BIN_DIR}/../sentences_canton.txt \
-  --output_dir=exp/default/test_e2e \
+  --text=./sentences_canton.txt \
+  --output_dir=./output \
   --phones_dict=fastspeech2_canton_ckpt_1.4.0/phone_id_map.txt \
   --speaker_dict=fastspeech2_canton_ckpt_1.4.0/speaker_id_map.txt \
   --spk_id=10 \
   --inference_dir=exp/default/inference
+  
+ffmpeg -f concat -safe 0 -i audio_list.txt -c copy output.wav -y
+
 ```
